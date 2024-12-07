@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<!-- saved from url=(0070)http://localhost:8080/Proyecto%20VentaExpress/controlador/Catalogo.php -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>VentaExpress</title>
+	<link rel="stylesheet" type="text/css" href="./index_files/w3.css">
+	<script src="./index_files/jquery.js.descarga"></script>
+	<style>
+
+		main {
+			width: 90%;
+			margin: auto;
+		}
+
+	</style>
+	<script>
+
+		$(document).ready(
+			function(){
+
+				// cargue la lista por defecto
+				carga();
+
+				$("#nu_categoria").click(function(){
+
+					carga();
+
+				});
+
+			}
+		);
+
+
+		function carga(){
+			nu_categoria = $("#nu_categoria").val();
+
+			$.ajax(
+			{
+				url: "../scripts/lista_catalogo.php",
+				data: {
+					nu_categoria : nu_categoria
+				},
+				type : 'GET',
+				success: function(result){
+					$("#lista").html(result);
+				}
+			}
+			);
+		}
+
+	</script>
+</head>
+<body>
+
+
+<header class="w3-black w3-padding w3-xlarge">
+	<p>
+		VentaExpress
+	</p>
+</header> 
+<style>
+
+	.menu {
+		height: 48px;
+	}
+
+</style>
+
+<div class="w3-padding w3-pale-yellow w3-right-align">
+
+	<a href="http://localhost:8080/Proyecto%20VentaExpress/controlador/Catalogo.php"><img src="./index_files/catalogo.png" class="menu w3-btn w3-light-grey" title="Haga click para consultar el catalogo"></a>
+
+	
+		<a href="http://localhost:8080/Proyecto%20VentaExpress/controlador/Registrese.php"><img src="./index_files/registrese.png" class="menu w3-btn w3-light-grey" title="Haga click para registrase al sistema"></a>
+
+		<a href="http://localhost:8080/Proyecto%20VentaExpress/controlador/Login.php"><img src="./index_files/login.png" class="menu w3-btn w3-light-grey" title="Haga click para ingresar al sistema"></a>
+
+	
+</div>
+
+
+<main class="w3-pale-blue w3-padding">
+	
+	<h1 class="w3-center">Catálogo</h1>
+
+	<p class="w3-center">
+		<label for="nu_categoria">Categoría</label>
+		<select name="nu_categoria" id="nu_categoria" class="w3-select w3-border">
+<option value="0">Seleccione</option>
+<option value="28">Cocina</option>
+<option value="24">Comida</option>
+<option value="23">Cosmeticos</option>
+<option value="26">Decoración</option>
+<option value="19">Deportes</option>
+<option value="29">Dormitorio</option>
+<option value="30">Escolar</option>
+<option value="25">Gaming</option>
+<option value="21">Herramientas</option>
+<option value="18">Juguetes</option>
+<option value="27">Maquillaje</option>
+<option value="20">Niños</option>
+<option value="22">Tecnología</option></select>	</p>
+
+	<div id="lista"></div>
+
+</main>
+
+
+<footer class="w3-orange w3-padding">
+	<p class="w3-center">
+		© 2024 - Todos los derechos reservados
+		<br>
+		<b>UneWeb</b>
+	</p>
+</footer>
+
+
+
+</body></html>
